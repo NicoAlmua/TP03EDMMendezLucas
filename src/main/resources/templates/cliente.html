@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Form</title>
+</head>
+
+<body>
+	<h1>Formulario de Carga de Cliente</h1>
+	<form id="formProducto" th:object="${unCliente}" th:action="@{/cliente/guardar}" method="post">
+
+		<label for="numdoc">Documento</label>
+		<input type="number" id="numdoc" th:field="*{nroDocumento}">
+		<br>
+		
+		<label for="tipo">Tipo</label>
+		<input type="text" id="tipo" th:field="*{tipoDocumento}">
+		<br>
+		
+		<label for="nombre">Apellido y Nombre</label>
+		<input type="text" id="nombre" th:field="*{nombre}">
+		<br>
+
+		<label for="fechanac">Nacimiento</label>
+		<input type="date" id="fechanac" th:field="*{fechaNacimiento}">
+		<br>
+		
+		<label for="fechacomp">Ultima Compra</label>
+		<input type="date" id="fechacomp" th:field="*{fechaUltimaCompra}">
+		<br>
+
+		<label for="codigo">Cod Area</label>
+		<input type="number" id="codigo" th:field="*{codigoAreaTelefono}">
+		<br>
+
+		<label for="numtel">Telefono</label>
+		<input type="number" id="numtel" th:field="*{numTelefono}">
+		<br>
+
+		<label for="email">Email</label>
+		<input type="email" id="email" th:field="*{email}">
+		<br>
+
+		<div>
+			<button type="submit" value="Agregar">Agregar</button>
+		</div>
+
+	</form>
+
+	<!-- ---------------------------------------------------------------- -->
+
+	<h3>Lista de Clientes</h3><br>
+	<div>
+		<table border=1 style="border-collapse:collapse">
+			<tr>
+				<th>Num Doc</th>
+				<th>Nombre y Apellido</th>
+				<th>Fecha</th>
+				<th>Tipo</th>
+				<th>Cod - Telefono</th>
+				<th>Email</th>
+				<th>Edad</th>
+				<th>Fecha Ultima Compra </th>
+				<th>Datos Adicionales</th>
+			</tr>
+			<tr th:each="cli : ${clientes}">
+				<td th:text="${cli.nroDocumento}"></td>
+				<td th:text="${cli.nombre}"></td>
+				<td th:text="${#temporals.format(cli.fechaNacimiento,'dd/MM/yyyy')}"></td>
+				<td th:text="${cli.tipoDocumento}"></td>
+				<td th:text="${cli.codigoAreaTelefono}+' - ' +${cli.numTelefono}"></td>
+				<td th:text="${cli.email}"></td>
+				<td th:text="${cli.edad}"></td>
+				<td th:text="${cli.fechaUltimaCompra}"></td>
+				<td th:text="${cli.hastaCumple} +' '+ ${cli.tiempoTranscurrido}"></td>
+						
+			</tr>
+				</table>
+			</div>
+
+</body>
+</html>
