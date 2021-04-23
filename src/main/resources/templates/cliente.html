@@ -13,11 +13,16 @@
 		<label for="numdoc">Documento</label>
 		<input type="number" id="numdoc" th:field="*{nroDocumento}">
 		<br>
-		
+
 		<label for="tipo">Tipo</label>
-		<input type="text" id="tipo" th:field="*{tipoDocumento}">
+		<select id="tipo" th:field="*{tipoDocumento}" > 
+                <option value="DNI">DNI</option>
+                <option value="Pasaporte">Pasaporte</option>
+                <option value="Pasaporte">Libreta de enrolamiento</option>
+                <option value="Otro">Otro</option>
+        </select>
 		<br>
-		
+
 		<label for="nombre">Apellido y Nombre</label>
 		<input type="text" id="nombre" th:field="*{nombre}">
 		<br>
@@ -25,7 +30,7 @@
 		<label for="fechanac">Nacimiento</label>
 		<input type="date" id="fechanac" th:field="*{fechaNacimiento}">
 		<br>
-		
+
 		<label for="fechacomp">Ultima Compra</label>
 		<input type="date" id="fechacomp" th:field="*{fechaUltimaCompra}">
 		<br>
